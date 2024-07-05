@@ -12,7 +12,7 @@ import cors from 'cors';
 
 let port = 3001; // try 8444 for prod
 const server_host = "https://blink-donate.vercel.app/"; // https fqd required for prod
-const auto_open = "donate-usdc-config"; // dial.to dev test window : set false for prod
+const auto_open = "false"; // dial.to dev test window : set false for prod
 
 
 // configures express web server 
