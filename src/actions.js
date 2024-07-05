@@ -11,7 +11,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 let port = 3001; // try 8444 for prod
-const server_host = "http://localhost"; // https fqd required for prod
+const server_host = "https://blink-donate.vercel.app/"; // https fqd required for prod
 const auto_open = "donate-usdc-config"; // dial.to dev test window : set false for prod
 
 
@@ -197,7 +197,7 @@ app.route('/donate-usdc-build/:address').post(async function (req, res) {
 });
 
 app.get("/actions.json", (req, res) => {
-  if (server_host == "http://localhost" && auto_open != false) {
+  if (server_host == "https://blink-donate.vercel.app/" && auto_open != false) {
     let rules = {
       "rules": [{
         "pathPattern": "/spl/*",
@@ -228,8 +228,8 @@ server.listen(port, () => {
   console.log('solana-action-express is running on ' + proto + http_port);
   console.log("server_host: ", server_host);
   console.log("auto_open: ", auto_open);
-  if (server_host == "http://localhost" && auto_open != false) {
-    let opening = "https://dial.to/?action=solana-action:http://localhost" + http_port + "/" + auto_open;
+  if (server_host == "http://https://blink-donate.vercel.app/" && auto_open != false) {
+    let opening = "https://dial.to/?action=solana-action:https://blink-donate.vercel.app/" + http_port + "/" + auto_open;
     console.log("opening window: " + opening); open(opening);
   }
 });
