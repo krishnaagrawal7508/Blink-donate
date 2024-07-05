@@ -2,7 +2,7 @@
 import { Connection, Transaction, Keypair, PublicKey, SystemProgram, ComputeBudgetProgram, TransactionInstruction, TransactionMessage, VersionedTransaction } from "@solana/web3.js";
 import * as splToken from "@solana/spl-token";
 import fs from 'fs';
-import mcbuild from './mcbuild.js';
+import mcbuild from './src/mcbuild.js';
 import open from 'open';
 import http from 'http';
 import https from 'https';
