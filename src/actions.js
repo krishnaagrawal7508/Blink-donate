@@ -212,19 +212,7 @@ app.get("/", (req, res) => {
   res.send(JSON.stringify('solana-action-express is running on ' + proto + http_port));
 });
 
-let server = null;
-if (proto == "https") {
-  const credentials = {
-    key: fs.readFileSync(ssl_key, 'utf8'),
-    cert: fs.readFileSync(ssl_crt, 'utf8')
-  };
-  server = https.createServer(credentials, app);
-
-} else {
-  server = http.createServer(app);
-};
-
-server.listen(port, () => {
+app.listen(port, () => {
   console.log('solana-action-express is running on ' + proto + http_port);
   console.log("server_host: ", server_host);
   console.log("auto_open: ", auto_open);
