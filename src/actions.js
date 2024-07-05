@@ -10,7 +10,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
-let port = 3001; // try 8444 for prod
+let port = 9000; // try 8444 for prod
 const server_host = "https://blink-donate.vercel.app/"; // https fqd required for prod
 // const auto_open = "false"; // dial.to dev test window : set false for prod
 
@@ -21,17 +21,17 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors({ origin: true }));
 
-let protocol;
-let http_port = ":" + port;
-let proto;
-if (server_host.includes("https:")) {
-  protocol = https;
-  proto = "https";
-}
-else {
-  protocol = http;
-  proto = "http";
-}
+// let protocol;
+// let http_port = ":" + port;
+// let proto;
+// if (server_host.includes("https:")) {
+//   protocol = https;
+//   proto = "https";
+// }
+// else {
+//   protocol = http;
+//   proto = "http";
+// }
 
 
 app.use(function (req, res, next) {
@@ -55,7 +55,7 @@ app.get('/donate-usdc-config/', (req, res) => {
     "actions": [
       {
         "label": "Send",
-        "href": server_host + http_port + "/donate-usdc-build/",
+        "href": "https://blink-donate.vercel.app/donate-usdc-build/",
         "parameters": [
           {
             "name": "amount",
@@ -82,7 +82,7 @@ app.get('/donate-usdc-config/:address', (req, res) => {
     "actions": [
       {
         "label": "Send",
-        "href": server_host + http_port + "/donate-usdc-build/" + address + "?amount={amount}",
+        "href": "https://blink-donate.vercel.app//donate-usdc-build/" + address + "?amount={amount}",
         "parameters": [
           {
             "name": "amount",
@@ -201,7 +201,7 @@ app.get("/actions.json", (req, res) => {
     let rules = {
       "rules": [{
         "pathPattern": "/spl/*",
-        "apiPath": server_host + http_port + "/" 
+        "apiPath": "https://blink-donate.vercel.app/" 
       }]
     };
     res.send(JSON.stringify(rules));
@@ -213,8 +213,8 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log('solana-action-express is running on ' + proto + http_port);
-  console.log("server_host: ", server_host);
+  // console.log('solana-action-express is running on ' + proto + http_port);
+  // console.log("server_host: ", server_host);
   // console.log("auto_open: ", auto_open);
   // if (server_host == "http://https://blink-donate.vercel.app/" && auto_open != false) {
   //   let opening = "https://dial.to/?action=solana-action:https://blink-donate.vercel.app/" + http_port + "/" + auto_open;
