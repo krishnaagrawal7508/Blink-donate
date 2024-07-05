@@ -11,7 +11,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 let port = 9000; // try 8444 for prod
-const server_host = "https://blink-donate.vercel.app/"; // https fqd required for prod
+// const server_host = "https://blink-donate.vercel.app/"; // https fqd required for prod
 // const auto_open = "false"; // dial.to dev test window : set false for prod
 
 
@@ -45,6 +45,7 @@ app.use(function (req, res, next) {
 
 // usdc donation default
 app.get('/donate-usdc-config/', (req, res) => {
+  console.log("router donate found")
   let name = "donate-usdc";
   let obj = {}
   obj.icon = "https://miro.medium.com/v2/resize:fit:400/1*MgGIm08OdUTUvgNyaUl0hw.jpeg";
@@ -82,7 +83,7 @@ app.get('/donate-usdc-config/:address', (req, res) => {
     "actions": [
       {
         "label": "Send",
-        "href": "https://blink-donate.vercel.app//donate-usdc-build/" + address + "?amount={amount}",
+        "href": "https://blink-donate.vercel.app/donate-usdc-build/" + address + "?amount={amount}",
         "parameters": [
           {
             "name": "amount",
@@ -209,7 +210,7 @@ app.get("/actions.json", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send(JSON.stringify('solana-action-express is running on ' + proto + http_port));
+  res.send(JSON.stringify('solana-action-express is running '));
 });
 
 app.listen(port, () => {
