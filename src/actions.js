@@ -216,8 +216,8 @@ app.listen(port, () => {
   console.log('solana-action-express is running on ' + proto + http_port);
   console.log("server_host: ", server_host);
   console.log("auto_open: ", auto_open);
-  if (server_host == "http://https://blink-donate.vercel.app/" && auto_open != false) {
-    let opening = "https://dial.to/?action=solana-action:https://blink-donate.vercel.app/" + http_port + "/" + auto_open;
-    console.log("opening window: " + opening); open(opening);
-  }
+  // if (server_host == "http://https://blink-donate.vercel.app/" && auto_open != false) {
+  //   let opening = "https://dial.to/?action=solana-action:https://blink-donate.vercel.app/" + http_port + "/" + auto_open;
+  //   console.log("opening window: " + opening); open(opening);
+  // }
 });
