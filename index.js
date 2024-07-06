@@ -205,7 +205,7 @@ app.get("/actions.json", (req, res) => {
         "apiPath": "https://blink-donate.vercel.app/" 
       }]
     };
-    res.send(JSON.stringify(rules));
+    res.send(JSON.stringify(rules), {headers: ACTIONS_CORS_HEADERS});
   }
 });
 
