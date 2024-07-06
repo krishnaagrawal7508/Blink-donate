@@ -97,7 +97,7 @@ app.get('/donate-usdc-config/:address', (req, res) => {
 });
 
 // usdc donation build tx 
-app.route('/donate-usdc-build/:address').post(async function (req, res) {
+app.post('/donate-usdc-build/:address', async function (req, res) {
 
   let err = {};
   if (typeof req.body.account == "undefined") {
