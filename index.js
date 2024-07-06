@@ -85,14 +85,14 @@ app.post('/donate-usdc-build/:address', async function (req, res) {
   if (typeof req.body.account == "undefined") {
     err.transaction = "error";
     err.message = "action did not receive an account";
-    res.send(JSON.stringify(err));
+    res.send(JSON.stringify(err), {headers: ACTIONS_CORS_HEADERS});
   }
 
   // verify amount param was passed
   if (typeof req.query.amount == "undefined") {
     err.transaction = "error";
     err.message = "action did not receive an amount to send";
-    res.send(JSON.stringify(err));
+    res.send(JSON.stringify(err), {headers: ACTIONS_CORS_HEADERS});
   }
 
   // action settings
@@ -175,7 +175,8 @@ app.post('/donate-usdc-build/:address', async function (req, res) {
   _tx_.priority = req.query.priority;
   let tx = await mcbuild.tx(_tx_);
   console.log(tx);
-  res.send(JSON.stringify(tx));
+
+  res.send(JSON.stringify(tx), {headers: ACTIONS_CORS_HEADERS});
 
 });
 
